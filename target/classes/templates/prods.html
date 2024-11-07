@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Formulario de Personas</title>
+    <style>
+        /* Estilos globales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        /* Estilo del contenedor del formulario */
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        /* Estilos de etiquetas y campos de entrada */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        /* Botón de envío */
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #357ab8;
+        }
+
+        /* Enlace a la lista */
+        .link-container {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .link-container a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Formulario de Prod</h1>
+        <!-- th:object="${persona}" enlaza al modelo (clase persona) -->
+        <form th:action="@{/guardarProd}" th:object="${prod}" method="post">
+
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" th:field="*{nombre}" required />
+
+            <label for="apellidos">Desc:</label>
+            <input type="text" th:field="*{desc}" required />
+
+            <label for="edad">Precio:</label>
+            <input type="number" th:field="*{precio}" required />
+
+            <button type="submit">Guardar Prod</button>
+        </form>
+        <div class="link-container">
+            <a th:href="@{/prodsList}">Ver Lista de Prod</a>
+        </div>
+    </div>
+    <a href="/"
+        style="position: fixed; bottom: 20px; right: 20px; background-color: #4a90e2; border-radius: 50%; width: 56px; height: 56px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); text-decoration: none;">
+        <span style="font-size: 30px; color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+            </svg></span> <!-- Flecha hacia arriba -->
+    </a>
+</body>
+
+</html>
